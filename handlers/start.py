@@ -1,11 +1,10 @@
-from config import bot ,dp
-from aiogram import types,Router,F
+from config import bot, dp
+from aiogram import types, Router, F
 from aiogram.filters import Command
 
-
-
-
 start_router = Router()
+
+
 @start_router.message(Command('start'))
 async def start(message: types.Message):
     kb = types.InlineKeyboardMarkup(
@@ -24,19 +23,26 @@ async def start(message: types.Message):
             ],
             [
                 types.InlineKeyboardButton(text="Вакансии", callback_data="jobs")
+            ],
+            [
+                types.InlineKeyboardButton(text="Оставить Отзыв", callback_data="feedback")
             ]
         ]
 
     )
     await message.answer("Hello", reply_markup=kb)
-@start_router.callback_query(F.data=='about_us')
+
+
+@start_router.callback_query(F.data == 'about_us')
 async def about_us(call: types.CallbackQuery):
     await call.answer('nothing yet')
 
-@start_router.callback_query(F.data=='review')
+
+@start_router.callback_query(F.data == 'review')
 async def review(call: types.CallbackQuery):
     await call.answer('nothing yet')
 
-@start_router.callback_query(F.data=='jobs')
+
+@start_router.callback_query(F.data == 'jobs')
 async def review(call: types.CallbackQuery):
     await call.answer('nothing yet')
