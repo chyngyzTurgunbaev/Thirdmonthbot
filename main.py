@@ -1,42 +1,19 @@
-from aiogram import Bot, Dispatcher,types
-from aiogram.filters import Command
 import asyncio
-from os import getenv
-from dotenv import load_dotenv
-import random
-load_dotenv()
-
-
-token = getenv("TOKEN")
-bot = Bot (token=token)
-dp = Dispatcher()
-recipes=[["manty",['meat','dough']],
-         ['plov',['meat','rice']],
-         ['kuurdak',['meat','potato']]]
+from config import bot,dp
+from handlers.recipes import recipe_router
+from handlers.start import start_router
+from handlers.my_info import my_info_router
+from handlers.dishes import dishes_router
 
 
 
-
-
-
-@dp.message(Command('start'))
-async def start(message: types.Message):
-    await message.answer(f'Hello {message.from_user.first_name}')
-
-@dp.message(Command('my_info'))
-async def my_info(message: types.Message):
-    await message.answer(f'Name: {message.from_user.first_name}\n'
-                         f'id: {message.from_user.id}')
-
-@dp.message(Command('random_recipe'))
-async def random_recipe(message: types.Message):
-    random_recipe = random.choice(recipes)
-    await message.answer(f'{random_recipe[0]}\n'
-                         f'{random_recipe[1]}\n')
 async def main():
+    dp.include_router(start_router)
+    dp.include_router(recipe_router)
+    dp.include_router(my_info_router)
+    dp.include_router(dishes_router)
     await dp.start_polling(bot)
+
 
 if __name__ == '__main__':
     asyncio.run(main())
-
-
