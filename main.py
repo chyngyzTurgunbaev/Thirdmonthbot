@@ -7,6 +7,7 @@ from handlers.dishes import dishes_router
 from handlers.menu import menu_router
 from handlers.review_dialog import review_router
 from config import db
+from handlers.group import group_router
 async def main():
     db.create_table()
     dp.include_router(start_router)
@@ -15,6 +16,7 @@ async def main():
     dp.include_router(dishes_router)
     dp.include_router(menu_router)
     dp.include_router(review_router)
+    dp.include_router(group_router)
     await dp.start_polling(bot)
 
 

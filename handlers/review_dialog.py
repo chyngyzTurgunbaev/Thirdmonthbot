@@ -1,7 +1,5 @@
 from aiogram.fsm.state import State, StatesGroup
-from config import bot, dp
 from aiogram import types, Router, F
-from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from config import db
 

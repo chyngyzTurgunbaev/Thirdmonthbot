@@ -1,7 +1,5 @@
-from config import bot, dp
+from config import bot
 from aiogram import types, Router, F
-from aiogram.filters import Command
-import random
 from aiogram.types import FSInputFile
 
 dishes_router = Router()

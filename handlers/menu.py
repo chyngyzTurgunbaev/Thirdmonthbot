@@ -1,4 +1,3 @@
-from config import bot, dp
 from aiogram import types, Router
 from aiogram.filters import Command
 from aiogram.types import FSInputFile
