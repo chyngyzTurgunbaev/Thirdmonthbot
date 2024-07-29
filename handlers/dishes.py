@@ -9,17 +9,17 @@ dishes_router = Router()
 
 @dishes_router.message(F.text == 'напитки')
 async def drinks(message: types.Message):
-    photo = FSInputFile("images/milkshake.jpg")
+    photo = FSInputFile("images/cola.jpeg")
     await bot.send_photo(
         chat_id=message.from_user.id,
         photo=photo,
-        caption="milkshake"
+        caption="Coca-Cola"
     )
 
 
 @dishes_router.message(F.text == 'блюдо')
-async def drinks(message: types.Message):
-    photo = FSInputFile("images/kuurdak.jpg")
+async def dishes(message: types.Message):
+    photo = FSInputFile("images/kuurdak.jpeg")
     await bot.send_photo(
         chat_id=message.from_user.id,
         photo=photo,
