@@ -27,7 +27,7 @@
 #             result = connect.execute(query, params)
 #             return result.fetchall()
 import sqlite3
-from .queries import Queries
+from database.queries import Queries
 
 
 class Database:
